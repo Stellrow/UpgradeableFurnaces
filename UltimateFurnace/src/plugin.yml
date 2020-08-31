@@ -1,0 +1,11 @@
+name: UltimateFurnace
+author: Stellrow
+api-version: 1.13
+version: 1.0
+main: ro.Stellrow.UpgradeableFurnaces.UltimateFurnace
+
+commands:
+  ultimatefurnace:
+    usage: /ultimatefurnace
+    aliases:
+      - ultfurn

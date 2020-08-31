@@ -1,0 +1,8 @@
+ItemConfig:
+  name: '&eUltimate Furnace'
+  lore:
+    - '&7This very fast furnace will smelt things in no time!'
+    - "&7Let's smelt some ores!"
+GeneralConfig:
+  ticksToAdd: 10
+  allowCrafting: true
