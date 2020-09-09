@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UltimateFurnaceManager {
+    private List<Furnace> upgradeableFurnaces = new ArrayList<>();
     private final UltimateFurnace pl;
     private int tickToAdd = 10;
 
@@ -16,13 +17,13 @@ public class UltimateFurnaceManager {
         this.pl = pl;
     }
     public void init(){
+        upgradeableFurnaces.clear();
         tickToAdd=pl.getConfig().getInt("GeneralConfig.ticksToAdd");
         for(Furnace furnace : pl.getSqLite().getAllFurnaces()){
             addFurnace(furnace);
         }
-        start();
     }
-    private List<Furnace> upgradeableFurnaces = new ArrayList<>();
+
 
 
 
@@ -34,7 +35,7 @@ public class UltimateFurnaceManager {
         upgradeableFurnaces.remove(furnace);
     }
 
-    private void start(){
+    public void start(){
         Bukkit.getScheduler().runTaskTimer(pl,()->{
             for(Furnace furnace1 : upgradeableFurnaces){
                 if(furnace1.getBlock().getType()== Material.AIR){

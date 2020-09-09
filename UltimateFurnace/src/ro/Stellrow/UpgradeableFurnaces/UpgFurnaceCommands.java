@@ -33,6 +33,11 @@ public class UpgFurnaceCommands implements CommandExecutor {
                     return true;
                 }
             }
+            if(args.length==1&&args[0].equalsIgnoreCase("reload")){
+                pl.reloadFurnaces();
+                sender.sendMessage("Reloaded all available furnaces!");
+                return true;
+            }
         }
         return true;
     }

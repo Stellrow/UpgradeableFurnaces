@@ -23,12 +23,14 @@ public class UltimateFurnace extends JavaPlugin {
 
     public void onEnable(){
         loadConfig();
+        sqLite.load();
+        sqLite.initialize();
         new FastFurnaceEvents(this).init();
         upgradeableFurnacesManager.init();
         getCommand("ultimatefurnace").setExecutor(new UpgFurnaceCommands(this));
         furnace=buildFurnace();
-        sqLite.load();
-        sqLite.initialize();
+        upgradeableFurnacesManager.start();
+
         if(getConfig().getBoolean("GeneralConfig.allowCrafting")){
             loadRecipe();
         }
@@ -37,6 +39,10 @@ public class UltimateFurnace extends JavaPlugin {
     private void loadConfig(){
         getConfig().options().copyDefaults(true);
         saveConfig();
+    }
+
+    public void reloadFurnaces(){
+        upgradeableFurnacesManager.init();
     }
 
     public UltimateFurnaceManager getUpgradeableFurnacesManager(){return upgradeableFurnacesManager;}
